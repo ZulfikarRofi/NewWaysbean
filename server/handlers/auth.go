@@ -8,6 +8,7 @@ import (
 	jwtToken "_project_name_/pkg/jwt"
 	"_project_name_/repositories"
 	"encoding/json"
+	"fmt"
 	"log"
 	"net/http"
 	"time"
@@ -126,9 +127,10 @@ func (h *handlerAuth) Login(w http.ResponseWriter, r *http.Request) {
 		Token: token,
 	}
 
-	w.Header().Set("Content-Type", "application/json")
-	response := dto.SuccessResult{Code: http.StatusOK, Data: LoginResponse}
-	json.NewEncoder(w).Encode(response)
+	fmt.Println(LoginResponse)
+	// w.Header().Set("Content-Type", "application/json")
+	// response := dto.SuccessResult{Code: http.StatusOK, Data: LoginResponse}
+	// json.NewEncoder(w).Encode(response)
 }
 
 func (h *handlerAuth) CheckAuth(w http.ResponseWriter, r *http.Request) {
